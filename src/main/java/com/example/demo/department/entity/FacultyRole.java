@@ -1,0 +1,25 @@
+package com.example.demo.department.entity;
+
+import com.example.demo.user.entity.User;
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "faculty_role")
+public class FacultyRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "role")
+    private String role;
+
+    @ManyToOne
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+}

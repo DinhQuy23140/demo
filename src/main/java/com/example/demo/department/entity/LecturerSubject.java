@@ -1,0 +1,28 @@
+package com.example.demo.department.entity;
+
+import com.example.demo.user.entity.Teacher;
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "lecturer_subject")
+public class LecturerSubject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "semester")
+    private String semester;
+
+    @Column(name = "year")
+    private String year;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
+}
