@@ -3,9 +3,12 @@ package com.example.demo.assignment.entity;
 import com.example.demo.user.entity.Student;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
+@Getter
+@Setter
 @Table(name = "register_project_term")
 public class RegisterProjectTerm {
     @Id

@@ -3,11 +3,14 @@ package com.example.demo.assignment.entity;
 import com.example.demo.user.entity.Student;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "assignment")
 public class Assignment {
 
@@ -24,7 +27,7 @@ public class Assignment {
     @Column(name = "counter_argument_comment")
     private String counterArgumentComment;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
@@ -43,4 +46,12 @@ public class Assignment {
     @OneToMany(mappedBy = "assignment")
     private List<AssignmentSupervisor> assignmentSupervisors;
 
+    @OneToMany(mappedBy = "assignment")
+    private List<AssignmentSupervisor> assignmentSupervisorList;
+
+    @OneToOne(mappedBy = "assignment")
+    private CouncilProject councilProject;
+
+    @OneToMany(mappedBy = "assignment")
+    private List<PostponeProjectTerm> postponeProjectTermList;
 }

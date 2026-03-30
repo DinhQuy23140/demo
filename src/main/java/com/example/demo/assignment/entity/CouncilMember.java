@@ -2,9 +2,14 @@ package com.example.demo.assignment.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "council_member")
 public class CouncilMember {
 
@@ -22,4 +27,10 @@ public class CouncilMember {
     @ManyToOne
     @JoinColumn(name = "supervisor_id")
     private Supervisor supervisor;
+
+    @OneToMany(mappedBy = "councilMember")
+    List<CouncilProject> councilProjectList;
+
+    @OneToMany(mappedBy = "councilMember")
+    List<CouncilProjectDefences> councilProjectDefencesList;
 }

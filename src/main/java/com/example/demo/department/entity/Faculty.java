@@ -1,18 +1,20 @@
 package com.example.demo.department.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import jdk.dynalink.linker.LinkerServices;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
-@Data
-@RequiredArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@Table(name = "faculty")
 public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @Column(name = "faculty_code")
     private String facultyCode;
@@ -34,4 +36,10 @@ public class Faculty {
 
     @Column(name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "faculty")
+    private List<Department> departmentList;
+
+    @OneToMany(mappedBy = "faculty")
+    private List<FacultyRole> facultyRoleList;
 }

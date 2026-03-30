@@ -2,9 +2,12 @@ package com.example.demo.assignment.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
+@Getter
+@Setter
 @Table(name = "postpone_project_term_file")
 public class PostponeProjectTermFile {
     @Id

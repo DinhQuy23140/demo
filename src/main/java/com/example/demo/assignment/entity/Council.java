@@ -3,9 +3,15 @@ package com.example.demo.assignment.entity;
 import com.example.demo.department.entity.Department;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "council")
 public class Council {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,4 +42,10 @@ public class Council {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @OneToMany(mappedBy = "council")
+    private List<CouncilMember> councilMemberList;
+
+    @OneToMany(mappedBy = "council")
+    private List<CouncilProject> councilProjectLists;
 }

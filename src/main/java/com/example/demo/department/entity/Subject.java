@@ -2,9 +2,14 @@ package com.example.demo.department.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "subject")
 public class Subject {
     @Id
@@ -26,4 +31,7 @@ public class Subject {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @OneToMany(mappedBy = "subject")
+    private List<LecturerSubject> lecturerSubjectList;
 }

@@ -2,9 +2,15 @@ package com.example.demo.assignment.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "project_term")
 public class ProjectTerm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +31,22 @@ public class ProjectTerm {
     @ManyToOne
     @JoinColumn(name = "academy_year_id")
     private AcademyYear academyYear;
+
+    @OneToMany(mappedBy = "projectTerm")
+    private List<Assignment> assignmentList;
+
+    @OneToMany(mappedBy = "projectTerm")
+    private List<Supervisor> supervisorList;
+
+    @OneToMany(mappedBy = "projectTerm")
+    private List<StageTimeline> stageTimelineList;
+
+    @OneToMany(mappedBy = "projectTerm")
+    private List<Council> councilList;
+
+    @OneToMany(mappedBy = "projectTerm")
+    private List<RegisterProjectTerm> registerProjectTermList;
+
+    @OneToMany(mappedBy = "projectTerm")
+    private List<PostponeProjectTerm> postponeProjectTermList;
 }

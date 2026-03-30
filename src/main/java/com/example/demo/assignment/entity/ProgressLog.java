@@ -3,9 +3,16 @@ package com.example.demo.assignment.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "progress_log")
 public class ProgressLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,4 +45,10 @@ public class ProgressLog {
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
+
+    @OneToMany(mappedBy = "progressLog")
+    private List<Attachment> attachmentList;
+
+    @OneToMany(mappedBy = "progressLog")
+    private List<CommentLog> commentLogList;
 }

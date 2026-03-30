@@ -3,9 +3,12 @@ package com.example.demo.assignment.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "stage_time_line", uniqueConstraints = @UniqueConstraint(
         columnNames = {"project_term_id", "number_of_round"}
 ))

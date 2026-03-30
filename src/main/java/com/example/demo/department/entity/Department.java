@@ -1,14 +1,22 @@
 package com.example.demo.department.entity;
 
+import com.example.demo.user.entity.Teacher;
 import jakarta.persistence.*;
+import jdk.dynalink.linker.LinkerServices;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "department")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @Column(name = "department_code")
     private String departmentCode;
@@ -19,10 +27,23 @@ public class Department {
     @Column(name = "description")
     private String description;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
-    @OneToOne(mappedBy = "department")
-    private Marjor marjor;
+    @OneToMany(mappedBy = "department")
+    List<Teacher> teacherList;
+
+    @OneToMany(mappedBy = "department")
+    List<Marjor> marjorList;
+
+    @OneToMany(mappedBy = "department")
+    List<DepartmentRole> departmentRoleList;
+
+    @OneToMany(mappedBy = "department")
+    private List<Subject> subjectList;
+
+    @OneToMany(mappedBy = "department")
+    private List<Marjor> major;
+
 }

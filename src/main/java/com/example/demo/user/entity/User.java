@@ -1,10 +1,13 @@
 package com.example.demo.user.entity;
 
+import com.example.demo.department.entity.Faculty;
+import com.example.demo.department.entity.FacultyRole;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -45,9 +48,15 @@ public class User {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @OneToOne(mappedBy = "user")
+    private Student student;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @OneToOne(mappedBy = "user")
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "user")
+    private List<FacultyRole> facultyRoleList;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserReseach> userReseachList;
 }
