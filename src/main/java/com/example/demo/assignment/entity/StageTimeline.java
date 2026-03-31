@@ -2,13 +2,14 @@ package com.example.demo.assignment.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "stage_time_line", uniqueConstraints = @UniqueConstraint(
         columnNames = {"project_term_id", "number_of_round"}
 ))

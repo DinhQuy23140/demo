@@ -3,15 +3,16 @@ package com.example.demo.department.entity;
 import com.example.demo.user.entity.Teacher;
 import jakarta.persistence.*;
 import jdk.dynalink.linker.LinkerServices;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "department")
 public class Department {
     @Id

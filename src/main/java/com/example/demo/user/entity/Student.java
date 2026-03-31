@@ -4,15 +4,16 @@ import com.example.demo.assignment.entity.Assignment;
 import com.example.demo.assignment.entity.RegisterProjectTerm;
 import com.example.demo.department.entity.Marjor;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "student")
 public class Student {
     @Id

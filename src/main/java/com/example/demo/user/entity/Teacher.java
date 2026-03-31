@@ -6,15 +6,16 @@ import com.example.demo.department.entity.DepartmentRole;
 import com.example.demo.department.entity.LecturerSubject;
 import com.example.demo.user.service.UserService;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "teacher")
 public class Teacher {
     @Id
@@ -34,12 +35,13 @@ public class Teacher {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "teacher")
-    private List<Supervisor> supervisorList;
-
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Supervisor> supervisorList;
+
 
     @OneToMany(mappedBy = "teacher")
     private List<DepartmentRole> departmentRoleList;

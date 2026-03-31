@@ -2,23 +2,24 @@ package com.example.demo.assignment.entity;
 
 import com.example.demo.user.entity.Student;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @Table(name = "assignment")
+@NoArgsConstructor
 public class Assignment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
 
     @Column(name = "counter_argument_status")

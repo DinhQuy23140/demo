@@ -1,13 +1,14 @@
 package com.example.demo.assignment.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "assignment_supervisor")
 public class AssignmentSupervisor {
     @Id
