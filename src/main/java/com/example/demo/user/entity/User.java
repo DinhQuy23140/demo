@@ -48,6 +48,9 @@ public class User {
     @Column(name = "role")
     private String role;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     @OneToOne(mappedBy = "user")
     private Student student;
 
