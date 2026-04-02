@@ -5,6 +5,8 @@ import com.example.demo.department.entity.Department;
 import com.example.demo.department.entity.DepartmentRole;
 import com.example.demo.department.entity.LecturerSubject;
 import com.example.demo.user.service.UserService;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,20 +34,24 @@ public class Teacher {
     private String position;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "department_id")
     private Department department;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "teacher")
     private List<Supervisor> supervisorList;
 
-
+    @JsonBackReference
     @OneToMany(mappedBy = "teacher")
     private List<DepartmentRole> departmentRoleList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "teacher")
     private List<LecturerSubject> lecturerSubjectList;
 }

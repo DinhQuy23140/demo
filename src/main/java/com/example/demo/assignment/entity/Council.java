@@ -1,6 +1,9 @@
 package com.example.demo.assignment.entity;
 
 import com.example.demo.department.entity.Department;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonMerge;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -36,16 +39,20 @@ public class Council {
     private String time;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "project_term_id")
     private ProjectTerm projectTerm;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "department_id")
     private Department department;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "council")
     private List<CouncilMember> councilMemberList;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "council")
     private List<CouncilProject> councilProjectLists;
 }

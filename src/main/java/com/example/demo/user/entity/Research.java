@@ -1,5 +1,6 @@
 package com.example.demo.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,5 +25,6 @@ public class Research {
     private String description;
 
     @OneToMany(mappedBy = "research")
+    @JsonBackReference
     private List<UserReseach> userReseachList;
 }

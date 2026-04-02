@@ -1,5 +1,6 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Attachment {
     private String uploadTime;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "progress_log_id")
     private ProgressLog progressLog;
 }

@@ -1,5 +1,7 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -23,13 +25,16 @@ public class PostponeProjectTerm {
     private String status;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "project_term_id")
     private ProjectTerm projectTerm;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "assignment_id")
     private Assignment assignment;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "postponeProjectTerm")
     private List<PostponeProjectTermFile> postponeProjectTermFileList;
 }

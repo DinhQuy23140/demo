@@ -1,5 +1,6 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -23,12 +24,15 @@ public class Project {
     @Column(name = "description")
     private String description;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "project")
     private Assignment assignment;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "project")
     private List<ProgressLog> progressLogList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "project")
     private List<ReportFile> reportFileList;
 

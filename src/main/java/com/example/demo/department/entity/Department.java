@@ -1,6 +1,8 @@
 package com.example.demo.department.entity;
 
 import com.example.demo.user.entity.Teacher;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jdk.dynalink.linker.LinkerServices;
 import lombok.*;
@@ -29,21 +31,27 @@ public class Department {
     private String description;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "department")
     List<Teacher> teacherList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "department")
     List<Marjor> marjorList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "department")
     List<DepartmentRole> departmentRoleList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "department")
     private List<Subject> subjectList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "department")
     private List<Marjor> major;
 

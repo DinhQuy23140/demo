@@ -1,5 +1,6 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -21,10 +22,12 @@ public class CouncilProjectDefences {
     private String comment;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "council_project_id")
     private CouncilProject councilProject;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "council_member_id")
     private CouncilMember councilMember;
 }

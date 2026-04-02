@@ -1,5 +1,6 @@
 package com.example.demo.department.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jdk.dynalink.linker.LinkerServices;
 import lombok.*;
@@ -40,8 +41,10 @@ public class Faculty {
     private String address;
 
     @OneToMany(mappedBy = "faculty")
+    @JsonBackReference
     private List<Department> departmentList;
 
     @OneToMany(mappedBy = "faculty")
+    @JsonBackReference
     private List<FacultyRole> facultyRoleList;
 }

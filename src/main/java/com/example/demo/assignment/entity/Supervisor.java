@@ -1,6 +1,8 @@
 package com.example.demo.assignment.entity;
 
 import com.example.demo.user.entity.Teacher;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,25 +25,31 @@ public class Supervisor {
     private Integer maxStudent;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     @ManyToOne
-    @JoinColumn(name = "project_term")
+    @JsonManagedReference
+    @JoinColumn(name = "project_term_id")
     private ProjectTerm projectTerm;
 
     @OneToMany(mappedBy = "supervisor")
+    @JsonBackReference
     private List<AssignmentSupervisor> assignmentSupervisorList;
 
     @OneToMany(mappedBy = "supervisor")
+    @JsonBackReference
     private List<CouncilMember> councilMemberList;
 
 //    @OneToMany(mappedBy = "supervisor")
 //    private List<CouncilProject> councilProjectList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "supervisor")
     private List<CommentLog> commentLogList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "supervisor")
     private List<ProposeTopic> proposeTopicList;
 }

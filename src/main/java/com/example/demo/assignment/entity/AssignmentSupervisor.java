@@ -1,5 +1,6 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,10 +28,12 @@ public class AssignmentSupervisor {
     private String comment;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "assinment_id")
     private Assignment assignment;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "supervisor_id")
     private Supervisor supervisor;
 }

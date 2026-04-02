@@ -1,5 +1,7 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +22,7 @@ public class AcademyYear {
     @Column(name = "year_name")
     private String yearName;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "academyYear")
     List<ProjectTerm> projectTermList;
 }

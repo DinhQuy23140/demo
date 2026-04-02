@@ -1,5 +1,7 @@
 package com.example.demo.department.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -29,9 +31,11 @@ public class Subject {
     private String numberOdCredits;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "department_id")
     private Department department;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "subject")
     private List<LecturerSubject> lecturerSubjectList;
 }

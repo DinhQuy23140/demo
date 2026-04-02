@@ -1,5 +1,7 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,25 +31,32 @@ public class ProjectTerm {
     @Column(name = "end_date")
     private String endDate;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "academy_year_id")
     private AcademyYear academyYear;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "projectTerm")
     private List<Assignment> assignmentList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "projectTerm")
     private List<Supervisor> supervisorList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "projectTerm")
     private List<StageTimeline> stageTimelineList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "projectTerm")
     private List<Council> councilList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "projectTerm")
     private List<RegisterProjectTerm> registerProjectTermList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "projectTerm")
     private List<PostponeProjectTerm> postponeProjectTermList;
 }

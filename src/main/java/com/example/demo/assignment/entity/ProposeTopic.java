@@ -1,5 +1,6 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class ProposeTopic {
     private String proposedAt;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "supervisor_id")
     private Supervisor supervisor;
 }

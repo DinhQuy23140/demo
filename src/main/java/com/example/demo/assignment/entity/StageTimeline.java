@@ -1,6 +1,7 @@
 package com.example.demo.assignment.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +32,7 @@ public class StageTimeline {
     private Integer numberOfRound;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "project_term_id")
     private ProjectTerm projectTerm;
 

@@ -1,6 +1,7 @@
 package com.example.demo.department.entity;
 
 import com.example.demo.user.entity.Teacher;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -22,10 +23,12 @@ public class LecturerSubject {
     private String year;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "subject_id")
     private Subject subject;
 }

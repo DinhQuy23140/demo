@@ -1,6 +1,8 @@
 package com.example.demo.assignment.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -43,12 +45,15 @@ public class ProgressLog {
     private String instructorStatus;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "project_id")
     private Project project;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "progressLog")
     private List<Attachment> attachmentList;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "progressLog")
     private List<CommentLog> commentLogList;
 }

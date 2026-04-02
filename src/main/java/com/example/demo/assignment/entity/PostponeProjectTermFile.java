@@ -1,5 +1,6 @@
 package com.example.demo.assignment.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class PostponeProjectTermFile {
     private String fileType;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "postpone_project_term_id")
     private PostponeProjectTerm postponeProjectTerm;
 }

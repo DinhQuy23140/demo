@@ -2,6 +2,7 @@ package com.example.demo.user.entity;
 
 import com.example.demo.department.entity.Faculty;
 import com.example.demo.department.entity.FacultyRole;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -52,14 +53,18 @@ public class User {
     private LocalDateTime createdAt;
 
     @OneToOne(mappedBy = "user")
+    @JsonBackReference
     private Student student;
 
     @OneToOne(mappedBy = "user")
+    @JsonBackReference
     private Teacher teacher;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private List<FacultyRole> facultyRoleList;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private List<UserReseach> userReseachList;
 }
