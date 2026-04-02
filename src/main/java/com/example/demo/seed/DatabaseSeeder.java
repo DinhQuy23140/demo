@@ -39,19 +39,19 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userSeeder.seed();
-        academySeeder.seed();
-        facultySeeder.seed();
-        departmentSeeder.seed();
-        majorSeeder.seed();
-        studentSeeder.seed();
-        teacherSeeder.seed();
-        projectTermSeeder.seed();
-        stageTimelineSeeder.seed();
-        supervisorSeeder.seed();
-        assignmentSeeder.seed();
-        assignmentSupervisorSeeder.seed();
-        researchSeeder.seed();
-        userResearchSeeder.seed();
+//        userSeeder.seed();
+//        academySeeder.seed();
+//        facultySeeder.seed();
+//        departmentSeeder.seed();
+//        majorSeeder.seed();
+//        studentSeeder.seed();
+//        teacherSeeder.seed();
+//        projectTermSeeder.seed();
+//        stageTimelineSeeder.seed();
+//        supervisorSeeder.seed();
+//        assignmentSeeder.seed();
+//        assignmentSupervisorSeeder.seed();
+//        researchSeeder.seed();
+//        userResearchSeeder.seed();
     }
 }

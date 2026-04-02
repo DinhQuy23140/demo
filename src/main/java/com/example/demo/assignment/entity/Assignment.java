@@ -30,7 +30,7 @@ public class Assignment {
     @Column(name = "counter_argument_comment")
     private String counterArgumentComment;
 
-    @OneToOne
+    @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "student_id")
     private Student student;

@@ -5,12 +5,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.expression.spel.ast.Assign;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
 
-    List<Assignment> getAssignmentsByStudentId(Long studentId);
+    List<Assignment> getAssignmentsByStudent_Id(Long studentId);
 
-    List<Assignment> getAssignmentsByProjectTermIdAndStudentId(Long projectTerm_id, Long student_id);
+    List<Assignment> getAssignmentsByProject_Term_IdAndStuden_tId(Long projectTerm_id, Long student_id);
 
-    Assignment findFirstByStudent_IdOrderByIdDesc(Long studentId);
+    Optional<Assignment> findFirstByStudent_IdOrderByIdDesc(Long studentId);
 }

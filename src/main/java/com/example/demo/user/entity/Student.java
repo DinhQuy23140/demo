@@ -36,9 +36,9 @@ public class Student {
     @JsonManagedReference
     private User user;
 
-    @OneToOne(mappedBy = "student")
+    @OneToMany(mappedBy = "student")
     @JsonBackReference
-    private Assignment assignment;
+    private List<Assignment> assignment;
 
     @OneToOne
     @JsonManagedReference
